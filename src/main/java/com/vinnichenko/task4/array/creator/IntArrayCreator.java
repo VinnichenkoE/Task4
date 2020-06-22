@@ -1,18 +1,17 @@
 package com.vinnichenko.task4.array.creator;
 
 import com.vinnichenko.task4.array.entity.IntArray;
+import com.vinnichenko.task4.array.service.Service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class IntArrayCreator {
     public IntArray consoleCreate() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        Service service = new Service();
         System.out.println("Input length of array");
         String input = "";
         try {
-            input = bufferedReader.readLine();
+            input = service.input();
         } catch (IOException e) {
             e.printStackTrace(); // FIXME: 22.06.2020 
         }
@@ -21,7 +20,7 @@ public class IntArrayCreator {
         for (int i = 0; i < length; i++) {
             System.out.println("Input " + i + " element"); // FIXME: 22.06.2020 
             try {
-                input = bufferedReader.readLine();
+                input = service.input();
             } catch (IOException e) {
                 e.printStackTrace(); // FIXME: 22.06.2020 
             }

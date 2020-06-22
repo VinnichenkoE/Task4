@@ -1,5 +1,9 @@
 package com.vinnichenko.task4.array.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Service {
 
     public int[] FibonacciNumbers(int bound) {
@@ -38,5 +42,10 @@ public class Service {
     public boolean isFibonacci(int number) {
         final int fiveTimesSquare = 5 * number * number;
         return isPerfectSquare(fiveTimesSquare + 4) || isPerfectSquare(fiveTimesSquare - 4);
+    }
+
+    public String input() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        return bufferedReader.readLine();
     }
 }
