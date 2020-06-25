@@ -4,20 +4,20 @@ import com.vinnichenko.task4_1.exception.ProgramException;
 
 public class ProgramService {
 
-    public int min (int[] arr) {
+    public int min(int[] arr) {
         int min = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if(min > arr[i]) {
+            if (min > arr[i]) {
                 min = arr[i];
             }
         }
         return min;
     }
 
-    public int max (int[] arr) {
+    public int max(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if(max < arr[i]) {
+            if (max < arr[i]) {
                 max = arr[i];
             }
         }
@@ -37,7 +37,7 @@ public class ProgramService {
         while (!sorted) {
             sorted = true;
             for (int i = 0; i < array.length - 1; i++) {
-                if (compare(array[i], array[i+1], method)) {
+                if (compare(array[i], array[i + 1], method)) {
                     int[] tmp = array[i + 1];
                     array[i + 1] = array[i];
                     array[i] = tmp;
