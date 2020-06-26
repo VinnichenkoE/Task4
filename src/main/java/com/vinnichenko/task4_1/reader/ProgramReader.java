@@ -11,14 +11,21 @@ import java.nio.file.Paths;
 
 public class ProgramReader {
 
-    public String readFile() throws ProgramException {
+    private static final String DEFAULT_PATH = "src/main/resources/data/array.txt"; // don't work with path "/data/array.txt"
+
+    public String readFile(String filePath) throws ProgramException {
         BufferedReader br = null;
         String numbers;
-        Path path = Paths.get("src/main/resources/data/array.txt");
+        StringBuilder stringBuilder = new StringBuilder();
+        if (filePath == null) {
+            filePath = DEFAULT_PATH;
+        }
+        Path path = Paths.get(filePath);
         try {
             br = Files.newBufferedReader(path);
-            numbers = br.readLine();
-
+            while ((numbers = br.readLine()) != null) {
+                stringBuilder.append(numbers).append(" ");
+            }
         } catch (IOException e) {
             throw new ProgramException("can not find file");
         } finally {
@@ -30,14 +37,13 @@ public class ProgramReader {
                 }
             }
         }
-        return numbers;
+        return stringBuilder.toString();
     }
 
     public String readConsole() throws ProgramException {
-
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input length of array");
-        String input = "";
+        String input;
         StringBuilder sb = new StringBuilder();
         try {
             input = bufferedReader.readLine();
@@ -45,22 +51,20 @@ public class ProgramReader {
             throw new ProgramException("can not read line");
         }
         int length = Integer.parseInt(input);
-        for (int i = 0; i < length; i++) {
-            System.out.println("Input " + i + " element");
-            try {
+        try {
+            for (int i = 0; i < length; i++) {
+                System.out.println("Input " + i + " element");
                 input = bufferedReader.readLine();
-            } catch (IOException e) {
-                throw new ProgramException("can not read line");
-            } finally {
-                if (bufferedReader != null) {
-                    try {
-                        bufferedReader.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                sb.append(input).append(" ");
             }
-            sb.append(input).append(" ");
+        } catch (IOException e) {
+            throw new ProgramException("can not read line");
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return sb.toString();
     }

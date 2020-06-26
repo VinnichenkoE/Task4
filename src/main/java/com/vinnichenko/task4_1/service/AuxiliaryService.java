@@ -3,12 +3,13 @@ package com.vinnichenko.task4_1.service;
 public class AuxiliaryService {
 
     public boolean isSimple(int number) {
+        boolean result = true;
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                return false;
+                result =  false;
             }
         }
-        return true;
+        return result;
     }
 
     public boolean isPerfectSquare(int number) {
