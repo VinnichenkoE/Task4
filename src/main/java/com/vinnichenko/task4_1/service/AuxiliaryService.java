@@ -6,7 +6,7 @@ public class AuxiliaryService {
         boolean result = true;
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                result =  false;
+                result = false;
             }
         }
         return result;
@@ -19,6 +19,7 @@ public class AuxiliaryService {
 
     public boolean isFibonacci(int number) {
         final int fiveTimesSquare = 5 * number * number;
-        return isPerfectSquare(fiveTimesSquare + 4) || isPerfectSquare(fiveTimesSquare - 4);
+        return isPerfectSquare(fiveTimesSquare + 4)
+                || isPerfectSquare(fiveTimesSquare - 4);
     }
 }

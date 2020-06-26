@@ -1,7 +1,6 @@
 package com.vinnichenko.task4_1.entity;
 
 import com.vinnichenko.task4_1.exception.ProgramException;
-import com.vinnichenko.task4_1.validator.IntArrayValidator;
 
 import java.util.OptionalInt;
 
@@ -24,16 +23,14 @@ public class IntArray {
     }
 
     public OptionalInt getElement(int index) {
-        IntArrayValidator intArrayValidator = new IntArrayValidator();
-        if (!intArrayValidator.isIndexCorrect(index, getLength())) {
+        if (!isIndexCorrect(index)) {
             return OptionalInt.empty();
         }
         return OptionalInt.of(value[index]);
     }
 
     public boolean setElement(int value, int index) {
-        IntArrayValidator intArrayValidator = new IntArrayValidator();
-        if (!intArrayValidator.isIndexCorrect(index, getLength())) {
+        if (!isIndexCorrect(index)) {
             return false;
         }
         this.value[index] = value;
@@ -42,6 +39,14 @@ public class IntArray {
 
     public int getLength() {
         return this.value.length;
+    }
+
+    private boolean isIndexCorrect(int index) {
+        boolean result = false;
+        if (index >= 0 && index < value.length) {
+            result = true;
+        }
+        return result;
     }
 
     @Override

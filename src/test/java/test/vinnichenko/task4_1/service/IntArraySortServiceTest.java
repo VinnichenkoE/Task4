@@ -3,11 +3,11 @@ package test.vinnichenko.task4_1.service;
 import com.vinnichenko.task4_1.entity.IntArray;
 import com.vinnichenko.task4_1.exception.ProgramException;
 import com.vinnichenko.task4_1.service.IntArraySortService;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
 public class IntArraySortServiceTest {
 
@@ -42,7 +42,6 @@ public class IntArraySortServiceTest {
         IntArray intArray = null;
         intArraySortService.insertionSort(intArray);
     }
-
 
     @Test
     public void bubbleSortTest() {

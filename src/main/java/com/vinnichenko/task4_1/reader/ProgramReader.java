@@ -44,18 +44,18 @@ public class ProgramReader {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input length of array");
         String input;
-        StringBuilder sb = new StringBuilder();
         try {
             input = bufferedReader.readLine();
         } catch (IOException e) {
             throw new ProgramException("can not read line");
         }
         int length = Integer.parseInt(input);
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             for (int i = 0; i < length; i++) {
                 System.out.println("Input " + i + " element");
                 input = bufferedReader.readLine();
-                sb.append(input).append(" ");
+                stringBuilder.append(input).append(" ");
             }
         } catch (IOException e) {
             throw new ProgramException("can not read line");
@@ -66,6 +66,6 @@ public class ProgramReader {
                 e.printStackTrace();
             }
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 }
